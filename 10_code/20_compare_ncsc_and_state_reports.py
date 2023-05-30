@@ -17,10 +17,18 @@ reports = pd.melt(
     var_name="Year",
 )
 reports["source"] = "State Court Reports"
+
+reports.loc[
+    (reports.State == "Colorado") & (reports.Court == "District"), "source"
+] = "State Court Reports (District)"
+reports.loc[
+    (reports.State == "Colorado") & (reports.Court == "County"), "source"
+] = "State Court Reports (County)"
 reports = reports[reports["value"].notnull()]
 reports[reports["State"] == "Indiana"]
 reports["Year"] = reports["Year"].replace(",", "").astype("int")
 reports["value"] = reports["value"].astype("float")
+
 ncsc["source"] = "NCSC"
 ncsc["fiscal_year"] = "no"
 

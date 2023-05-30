@@ -48,4 +48,4 @@ for s in reports.State.unique():
         .theme({**style.library["seaborn-whitegrid"]})
     )
     p.show()
-    p.save(f"../30_results/ncsc_v_statereports_{s}.png")
+    p.save(f"../30_results/ncsc_v_statereports_{s}.png", bbox_inches="tight")
